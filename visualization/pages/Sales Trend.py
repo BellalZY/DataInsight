@@ -4,7 +4,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 
 # Load CSV
-df = pd.read_csv("data/monthly_sales_trend.csv")
+df = pd.read_csv("visualization/data/monthly_sales_trend.csv")
 
 years = sorted(df['year'].unique())
 for y in years:

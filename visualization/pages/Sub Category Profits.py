@@ -3,7 +3,7 @@ import pandas as pd
 
 
 # Load CSV
-df = pd.read_csv("data/sales_profit_subCategory.csv")
+df = pd.read_csv("visualization/data/sales_profit_subCategory.csv")
 
 # Show title and data
 st.title("sales profit by sub category Preview")

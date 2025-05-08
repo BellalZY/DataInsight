@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 st.title("Revenue Contribution by Top 10 Customers")
-df = pd.read_csv("data/top10_customer.csv")
+df = pd.read_csv("visualization/data/top10_customer.csv")
 
 fig = px.treemap(
     df,
