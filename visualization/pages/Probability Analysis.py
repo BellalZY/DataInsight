@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 
-df = pd.read_csv("../profitability_category.csv")
+df = pd.read_csv("data/profitability_category.csv")
 
 st.title("Profitability by Product Category")
 fig3 = plt.figure()

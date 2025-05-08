@@ -4,7 +4,7 @@ from langchain.chat_models import ChatOpenAI
 import pandas as pd
 
 dfs = {}
-uploaded_files = ["../DIM_CUSTOMER.csv","../DIM_DATE.csv","../DIM_ORDER.csv","../DIM_PRODUCT.csv","../DIM_RETURN.csv","../sales_over_time.csv","../sales_profit_subCategory.csv","../monthly_sales_trend.csv","../profitability_category.csv","../top10_customer.csv","../ship_performance.csv",]
+uploaded_files = ["data/DIM_CUSTOMER.csv","data/DIM_DATE.csv","data/DIM_ORDER.csv","data/DIM_PRODUCT.csv","data/DIM_RETURN.csv","data/sales_over_time.csv","data/sales_profit_subCategory.csv","data/monthly_sales_trend.csv","data/profitability_category.csv","data/top10_customer.csv","data/ship_performance.csv",]
 for file in uploaded_files:
     dfs[file] = pd.read_csv(file)
 
@@ -52,11 +52,11 @@ with st.form("my_form"):
     if submitted:
         generate_response(text)
 
-df1 = pd.read_csv("../DIM_CUSTOMER.csv")
-df2 = pd.read_csv("../DIM_DATE.csv")
-df3 = pd.read_csv("../DIM_ORDER.csv")
-df4 = pd.read_csv("../DIM_PRODUCT.csv")
-df5 = pd.read_csv("../DIM_RETURN.csv")
+df1 = pd.read_csv("data/DIM_CUSTOMER.csv")
+df2 = pd.read_csv("data/DIM_DATE.csv")
+df3 = pd.read_csv("data/DIM_ORDER.csv")
+df4 = pd.read_csv("data/DIM_PRODUCT.csv")
+df5 = pd.read_csv("data/DIM_RETURN.csv")
 
 st.title("CUSTOMER Data Preview")
 
