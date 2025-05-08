@@ -67,7 +67,7 @@ if sample_option == "Random Sample":
     sampled_df = df1.sample(sample_size)
 
 elif sample_option == "Filter by Region":
-    selected_region = st.selectbox("Select a region", df4["Region"].dropna().unique())
+    selected_region = st.selectbox("Select a region", df1["Region"].dropna().unique())
     sampled_df = df1[df1["Region"] == selected_region]
 
 # Preview
