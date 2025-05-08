@@ -1,0 +1,9 @@
+pandas
+sqlalchemy
+oracledb
+chardet
+matplotlib
+streamlit
+plotly
+langchain
+openai
