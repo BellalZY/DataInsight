@@ -22,6 +22,8 @@ system_prompt = (
 st.title("Check out our AI Helper here to help you made decisions!")
 st.write("Our AI-powered assistant, seamlessly integrated with DeepSeek LLM, helps you make faster and smarter business decisions. Whether you're analyzing reports, generating insights, or asking complex questions about your data, the DeepSeek model provides accurate, context-aware answers in real time. Say goodbye to decision fatigue—just ask, and let AI guide your strategy.")
 
+openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+
 def generate_response(input_text):
     user_prompt = (
         f"Below are previews of the uploaded datasets:\n{previews}\n\n"
@@ -34,7 +36,7 @@ def generate_response(input_text):
             ]
     chat = ChatOpenAI(
         openai_api_base="https://api.deepseek.com/v1",
-        openai_api_key="sk-3c78b4c56cb048fc9f09a5bccff3e960",
+        openai_api_key=openai_api_key,
         model="deepseek-chat",
     )
 
