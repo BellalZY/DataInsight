@@ -4,13 +4,16 @@ import plotly.express as px
 
 df = pd.read_csv("visualization/data/return_rate_region.csv")
 
-pivot_df = df.pivot(index="REGION", columns="CATEGORY", values="RETURN_RATE")
-
-fig = px.imshow(
-    pivot_df,
-    text_auto=True,
-    labels=dict(x="Product Category", y="Region", color="Return Rate (%)"),
-    title="Return Rate Heatmap by Region and Product Category"
+fig = px.bar(
+    df,
+    x="region",
+    y="return_rate_percent",
+    text="return_rate_percent",
+    labels={"region": "Region", "return_rate_percent": "Return Rate (%)"},
+    title="Return Rate by Region"
 )
+
+fig.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
+fig.update_layout(yaxis_title="Return Rate (%)", xaxis_title="Region")
 
 st.plotly_chart(fig)
