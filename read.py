@@ -28,7 +28,7 @@ dsn = oracledb.makedsn(host, port, service_name=service_name)
 engine = create_engine(f'oracle+oracledb://{username}:{password}@{dsn}', echo=True)
 
 with engine.connect() as conn:
-    print("✅ Oracle connection successful!")
+    print("Oracle connection successful!")
 
 # Tables to export
 table_names = [
@@ -36,7 +36,19 @@ table_names = [
 ]
 
 # Export each to CSV
-for table in table_names:
-    df = pd.read_sql(f"SELECT * FROM {table}", engine)
-    df.to_csv(f"{table}.csv", index=False)
-    print(f"✅ Exported {table}.csv with {len(df)} rows")
+df = pd.read_sql(f"""SELECT
+DBMS_LOB.SUBSTR(dc."Region", 100) AS REGION,
+COUNT(fs.SALES_KEY) AS TOTAL_SALES,
+COUNT(fs.RETURN_KEY) AS TOTAL_RETURNS,
+ROUND(COUNT(fs.RETURN_KEY) * 100.0 / COUNT(fs.SALES_KEY), 2) AS RETURN_RATE_PERCENT
+FROM
+FACT_SALES fs
+JOIN
+DIM_CUSTOMER dc ON fs.CUSTOMER_KEY = dc.CUSTOMER_KEY
+GROUP BY
+DBMS_LOB.SUBSTR(dc."Region", 100)
+ORDER BY
+RETURN_RATE_PERCENT DESC""", engine)
+df.to_csv(f"return_rate_region.csv", index=False)
+print(f"Exported return_rate_region.csv with {len(df)} rows")
+
