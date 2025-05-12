@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv("return_rate_region.csv")
+df = pd.read_csv("visualization/data/return_rate_region.csv")
 
 pivot_df = df.pivot(index="REGION", columns="CATEGORY", values="RETURN_RATE")
 
